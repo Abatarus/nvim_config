@@ -7,7 +7,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
 vim.opt.autoindent = false
-vim.opt.smartindent = false
+vim.opt.smartindent = true
 
 vim.opt.fileformat = "unix" -- lf
 
@@ -30,10 +30,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = {
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 }, -- theme
-    { "Wansmer/langmapper.nvim", name="langmapper", priority = 1}, -- normal mode in ru keymap
-}
+local plugins = require("plugins")
 local opts = {}
 
 require("lazy").setup(plugins, opts)
