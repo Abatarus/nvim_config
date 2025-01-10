@@ -34,7 +34,7 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help ta
 
 local config = require("nvim-treesitter.configs")
 config.setup({
-    ensure_installed = {"lua", "c_sharp", "markdown", "markdown_inline", "xml", "rust","c", "cpp"},
+    ensure_installed = {"lua", "c_sharp", "markdown", "markdown_inline", "xml", "rust", "c", "cpp"},
     highlight = { enable = true },
     indent = { enable = true }
 })
