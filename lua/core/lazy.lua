@@ -19,6 +19,7 @@ require("lazy").setup({
         { import = "plugins" },
         { import = "plugins.editor" },
         { import = "plugins.ui" },
+        { import = "plugins.lsp" },
     },
     change_detection = {
         notify = false,
