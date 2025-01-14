@@ -4,7 +4,7 @@ return {
         local lspconfig = require("lspconfig")
 
         lspconfig.rust_analyzer.setup({})
-
+        lspconfig.lua_ls.setup({})
         lspconfig.omnisharp.setup({
             cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
         })
