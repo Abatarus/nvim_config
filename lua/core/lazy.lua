@@ -20,5 +20,8 @@ require("lazy").setup({
         { import = "plugins.editor" },
         { import = "plugins.ui" },
     },
+    change_detection = {
+        notify = false,
+    },
     checker = { enabled = true },
 })
