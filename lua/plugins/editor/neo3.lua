@@ -9,9 +9,18 @@ return {
     },
     lazy = false,
     opts = {
-        filesistem = {
+        filesystem = {
             folow_current_file = true,
             hijack_netrw = true,
+            filtered_items = {
+                hide_gitignored = true,
+                hide_by_name = {
+                    "obj",
+                },
+                hide_by_pattern = {
+                    "*.meta",
+                },
+            },
         },
     },
     keys = {
