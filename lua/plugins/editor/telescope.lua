@@ -35,6 +35,12 @@ return {
                 "%.vs" .. separator,
             },
         },
+        extensions = {
+            workspaces = {
+                keep_insert = true,
+                path_hl = "String",
+            },
+        },
     },
     keys = {
         { "<C-p>", function() require("telescope.builtin").find_files() end, desc = "Telescope find files" },
