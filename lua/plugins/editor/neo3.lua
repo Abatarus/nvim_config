@@ -7,6 +7,13 @@ return {
         "MunifTanjim/nui.nvim",
         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
+    lazy = false,
+    opts = {
+        filesistem = {
+            folow_current_file = true,
+            hijack_netrw = true,
+        },
+    },
     keys = {
         { "<leader>vt", ":Neotree<CR>", mode = "n", noremap = true, silent = true, desc = "" },
     },
