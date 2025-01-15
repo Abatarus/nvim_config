@@ -29,6 +29,7 @@ return {
                 "Packages",
                 "PackageChache",
                 separator .. "Library" .. separator,
+                separator .. "obj" .. separator,
                 "%.git" .. separator,
                 "%.git" .. separator,
                 "%.github" .. separator,
