@@ -30,7 +30,7 @@ return {
                 "PackageChache",
                 "Library",
                 "obj",
-                ".git",
+                ".git" .. separator,
                 ".github",
                 ".vs",
             },

@@ -5,6 +5,7 @@ return {
     { "hrsh7th/cmp-cmdline" },
     {
         "hrsh7th/nvim-cmp",
+        name = "nvim-cmp",
         config = function()
             local cmp = require("cmp")
             cmp.setup({

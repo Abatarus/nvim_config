@@ -7,6 +7,6 @@ return {
         }
     },
     keys = {
-        { "<leader>vw", ":Telescope workspaces<CR>", mode = "n", noremap = true, silent = true, desc = "" },
+        { "<leader>vw", ":Telescope workspaces<CR>", mode = "n", noremap = true, silent = true, desc = "View workspaces" },
     },
 }

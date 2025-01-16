@@ -1,6 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
-    after = "mason-lspconfig",
+    after = { "mason-lspconfig", "nvim-cmp" },
     config = function()
         local lspconfig = require("lspconfig")
         local capatibilities = require("cmp_nvim_lsp").default_capabilities()
