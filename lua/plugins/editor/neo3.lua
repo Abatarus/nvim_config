@@ -10,6 +10,7 @@ return {
     lazy = false,
     opts = {
         filesystem = {
+            close_if_last_window = false,
             folow_current_file = true,
             hijack_netrw = true,
             bind_to_cwd = true,

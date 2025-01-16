@@ -11,6 +11,9 @@ local attach_omnisharp = function(buffer)
 end
 return {
     "neovim/nvim-lspconfig",
+    dependencies = {
+        "williamboman/mason.nvim",
+    },
     after = { "mason-lspconfig", "nvim-cmp" },
     config = function()
         local lspconfig = require("lspconfig")
@@ -63,21 +66,21 @@ return {
 
                 local buffer = ev.buf
                 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition,
-                    { desc = "Go to definition", buffer = buffer, noremap = true, silent = true })
+                { desc = "Go to definition", buffer = buffer, noremap = true, silent = true })
                 vim.keymap.set("n", "K", vim.lsp.buf.hover,
-                    { desc = "Hover", buffer = buffer, noremap = true, silent = true })
+                { desc = "Hover", buffer = buffer, noremap = true, silent = true })
                 vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation,
-                    { desc = "Go to implementation", buffer = buffer, noremap = true, silent = true })
+                { desc = "Go to implementation", buffer = buffer, noremap = true, silent = true })
                 vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help,
-                    { desc = "Signature help", buffer = buffer, noremap = true, silent = true })
+                { desc = "Signature help", buffer = buffer, noremap = true, silent = true })
                 vim.keymap.set("n", "<leader>gD", vim.lsp.buf.type_definition,
-                    { desc = "Go to type definition", buffer = buffer, noremap = true, silent = true })
+                { desc = "Go to type definition", buffer = buffer, noremap = true, silent = true })
                 vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename,
-                    { desc = "Rename symbol", buffer = buffer, noremap = true, silent = true })
+                { desc = "Rename symbol", buffer = buffer, noremap = true, silent = true })
                 vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action,
-                    { desc = "", buffer = buffer, noremap = true, silent = true })
+                { desc = "", buffer = buffer, noremap = true, silent = true })
                 vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({async = true}) end,
-                    { desc = "", buffer = buffer, noremap = true, silent = true })
+                { desc = "", buffer = buffer, noremap = true, silent = true })
 
                 local client = vim.lsp.get_client_by_id(ev.data.client_id)
                 if client.name == "omnisharp" then
