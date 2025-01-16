@@ -1,5 +1,6 @@
 return {
     "neovim/nvim-lspconfig",
+    after = "mason-lspconfig",
     config = function()
         local lspconfig = require("lspconfig")
         local capatibilities = require("cmp_nvim_lsp").default_capabilities()
@@ -9,6 +10,25 @@ return {
         })
         lspconfig.lua_ls.setup({
             capatibilities = capatibilities,
+            settings = {
+                Lua = {
+                    runtime = {
+                        version = "LuaJIT",
+                    },
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                    workspace = {
+                        library = {
+                            vim.api.nvim_get_runtime_file("", true),
+                        },
+                        checkThirdParty = false,
+                    },
+                    telemetry = {
+                        enable = false,
+                    },
+                },
+            },
         })
         lspconfig.omnisharp.setup({
             capatibilities = capatibilities,
@@ -37,10 +57,10 @@ return {
                 vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename Symbol" })
                 vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, opts)
                 vim.keymap.set("n", "<leader>lf", 
-                    function()
-                        vim.lsp.buf.format({async = true})
-                    end,
-                    opts)
+                function()
+                    vim.lsp.buf.format({async = true})
+                end,
+                opts)
             end,
         })
     end,

@@ -12,6 +12,10 @@ return {
         filesystem = {
             folow_current_file = true,
             hijack_netrw = true,
+            bind_to_cwd = true,
+            cwd_target = {
+                allow_outside_cwd = false,
+            },
             filtered_items = {
                 hide_gitignored = true,
                 hide_by_name = {
@@ -24,6 +28,6 @@ return {
         },
     },
     keys = {
-        { "<leader>vt", ":Neotree<CR>", mode = "n", noremap = true, silent = true, desc = "" },
+        { "<leader>vt", ":Neotree<CR>", mode = "n", noremap = true, silent = true, desc = "View tree" },
     },
 }
