@@ -11,6 +11,14 @@ return {
                 shortcut = {
                     { desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
                     {
+                        icon = " ",
+                        icon_hl = "@variable",
+                        desc = "Workspaces",
+                        group = "Label",
+                        action = "Telescope workspaces",
+                        key = "w",
+                    },
+                    {
                         icon = " ",
                         icon_hl = "@variable",
                         desc = "Files",

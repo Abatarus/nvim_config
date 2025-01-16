@@ -1,9 +1,13 @@
-local attach_omnisharp = function()
-    ext = require('omnisharp_extended')
-    vim.keymap.set('n', '<leader>gr', ext.telescope_lsp_references, { noremap = true, silent = true })
-    vim.keymap.set('n', '<leader>gd', function() ext.telescope_lsp_definition({ jump_type = 'vsplit' }) end, { noremap = true, silent = true })
-    vim.keymap.set('n', '<leader>gD', ext.telescope_lsp_type_definition, { noremap = true, silent = true })
-    vim.keymap.set('n', '<leader>gi', ext.telescope_lsp_implementation, { noremap = true, silent = true })
+local attach_omnisharp = function(buffer)
+    local ext = require('omnisharp_extended')
+    vim.keymap.set('n', '<leader>gr', ext.telescope_lsp_references,
+    { desc = "Go to references", buffer = buffer, noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>gd', function() ext.telescope_lsp_definition({ jump_type = 'vsplit' }) end,
+    { desc = "Go to definition", buffer = buffer, noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>gD', ext.telescope_lsp_type_definition,
+    { desc = "Go to type definition", buffer = buffer, noremap = true, silent = true })
+    vim.keymap.set('n', '<leader>gi', ext.telescope_lsp_implementation,
+    { desc = "Go to implementation", buffer = buffer, noremap = true, silent = true })
 end
 return {
     "neovim/nvim-lspconfig",
@@ -57,23 +61,27 @@ return {
             callback = function(ev)
                 vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-                local opts = { buffer = ev.buf }
-                vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts) -- TODO
-                vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, opts)
-                vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-                vim.keymap.set("n", "<leader>gD", vim.lsp.buf.type_definition, opts)
-                vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename Symbol" })
-                vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, opts)
-                vim.keymap.set("n", "<leader>lf", 
-                function()
-                    vim.lsp.buf.format({async = true})
-                end,
-                opts)
-                local client = vim.lsp.get_client_by_id(ev.data.client_id) 
-                print(vim.inspect(client))
+                local buffer = ev.buf
+                vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition,
+                    { desc = "Go to definition", buffer = buffer, noremap = true, silent = true })
+                vim.keymap.set("n", "K", vim.lsp.buf.hover,
+                    { desc = "Hover", buffer = buffer, noremap = true, silent = true })
+                vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation,
+                    { desc = "Go to implementation", buffer = buffer, noremap = true, silent = true })
+                vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help,
+                    { desc = "Signature help", buffer = buffer, noremap = true, silent = true })
+                vim.keymap.set("n", "<leader>gD", vim.lsp.buf.type_definition,
+                    { desc = "Go to type definition", buffer = buffer, noremap = true, silent = true })
+                vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename,
+                    { desc = "Rename symbol", buffer = buffer, noremap = true, silent = true })
+                vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action,
+                    { desc = "", buffer = buffer, noremap = true, silent = true })
+                vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({async = true}) end,
+                    { desc = "", buffer = buffer, noremap = true, silent = true })
+
+                local client = vim.lsp.get_client_by_id(ev.data.client_id)
                 if client.name == "omnisharp" then
-                    attach_omnisharp()
+                    attach_omnisharp(buffer)
                 end
             end,
         })
