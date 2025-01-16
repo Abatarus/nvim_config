@@ -16,6 +16,7 @@ return {
                 "rust_analyzer",
                 "omnisharp",
                 "clangd",
+                "netcoredbg",
             },
         },
     },
