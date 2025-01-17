@@ -16,7 +16,16 @@ return {
                 "rust_analyzer",
                 "omnisharp",
                 "clangd",
-                "netcoredbg",
+            },
+        },
+    },
+    {
+        "jay-babu/mason-nvim-dap.nvim",
+        name = "mason-dap",
+        after = "mason",
+        opts = {
+            ensure_installed = {
+                "coreclr",
             },
         },
     },
