@@ -1,7 +1,7 @@
 -- Registers
-vim.keymap.set("v", "<leader>P", '"*p', { desc = "Paste from system buffer" })
+vim.keymap.set("n", "<leader>P", '"*p', { desc = "Paste from system buffer" })
 vim.keymap.set("v", "<leader>Y", '"*y', { desc = "Copy to system buffer" })
-vim.keymap.set("v", "<leader>p", '"Ap', { desc = "Paste from local buffer" })
+vim.keymap.set("n", "<leader>p", '"Ap', { desc = "Paste from local buffer" })
 vim.keymap.set("v", "<leader>y", '"Ay', { desc = "Copy to local buffer" })
 
 -- Neo-tree

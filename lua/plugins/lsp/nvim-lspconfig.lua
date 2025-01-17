@@ -78,7 +78,7 @@ return {
                 vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename,
                 { desc = "Rename symbol", buffer = buffer, noremap = true, silent = true })
                 vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action,
-                { desc = "", buffer = buffer, noremap = true, silent = true })
+                { desc = "Code action", buffer = buffer, noremap = true, silent = true })
                 vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({async = true}) end,
                 { desc = "", buffer = buffer, noremap = true, silent = true })
 
