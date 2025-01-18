@@ -18,7 +18,7 @@ keymap.lsp_code_action = "<leader>la"
 keymap.lsp_format_files = "<leader>lf"
 keymap.lsp_rename = "<leader>lr"
 keymap.lsp_signature_help = "<C-k>"
-keymap.lsp_hower = "K"
+keymap.lsp_hover = "K"
 
 keymap.view_global_troubles = "<leader>qq"
 keymap.view_buffer_troubles = "<leader>qQ"

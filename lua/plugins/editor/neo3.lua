@@ -29,6 +29,6 @@ return {
         },
     },
     keys = {
-        { "<leader>vt", ":Neotree<CR>", mode = "n", noremap = true, silent = true, desc = "View tree" },
+        { keymap.view_tree, ":Neotree toggle<CR>", mode = "n", noremap = true, silent = true, desc = "View tree" },
     },
 }

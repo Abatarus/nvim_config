@@ -43,10 +43,9 @@ return {
         },
     },
     keys = {
-        { "<C-p>", function() require("telescope.builtin").find_files() end, desc = "Telescope find files" },
-        { "<leader>ff", function() require("telescope.builtin").find_files() end, desc = "Telescope find files" },
-        { "<leader>fg", function() require("telescope.builtin").live_grep() end, desc = "Telescope live grep" },
-        { "<leader>fb", function() require("telescope.builtin").buffers() end, desc = "Telescope buffers" },
-        { "<leader>fh", function() require("telescope.builtin").help_tags() end, desc = "Telescope help tags" },
+        { keymap.find_files, function() require("telescope.builtin").find_files() end, desc = "Telescope find files" },
+        { keymap.live_grep, function() require("telescope.builtin").live_grep() end, desc = "Telescope live grep" },
+        { keymap.find_buffers, function() require("telescope.builtin").buffers() end, desc = "Telescope buffers" },
+        { keymap.find_help, function() require("telescope.builtin").help_tags() end, desc = "Telescope help tags" },
     },
 }

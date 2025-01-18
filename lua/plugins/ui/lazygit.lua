@@ -19,6 +19,6 @@ return {
     -- setting the keybinding for LazyGit with 'keys' is recommended in
     -- order to load the plugin when the command is run for the first time
     keys = {
-        { "<leader>vg", "<cmd>LazyGit<cr>", desc = "View lazygit" }
+        { keymap.view_git, "<cmd>LazyGit<cr>", desc = "View lazygit" }
     }
 }

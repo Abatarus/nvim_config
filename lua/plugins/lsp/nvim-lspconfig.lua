@@ -1,12 +1,12 @@
 local attach_omnisharp = function(buffer)
     local ext = require('omnisharp_extended')
-    vim.keymap.set('n', '<leader>gr', ext.telescope_lsp_references,
+    vim.keymap.set('n', keymap.go_to_references, ext.telescope_lsp_references,
     { desc = "Go to references", buffer = buffer, noremap = true, silent = true })
-    vim.keymap.set('n', '<leader>gd', function() ext.telescope_lsp_definition({ jump_type = 'vsplit' }) end,
+    vim.keymap.set('n', keymap.go_to_definition, function() ext.telescope_lsp_definition({ jump_type = 'vsplit' }) end,
     { desc = "Go to definition", buffer = buffer, noremap = true, silent = true })
-    vim.keymap.set('n', '<leader>gD', ext.telescope_lsp_type_definition,
+    vim.keymap.set('n', keymap.go_to_type_definition, ext.telescope_lsp_type_definition,
     { desc = "Go to type definition", buffer = buffer, noremap = true, silent = true })
-    vim.keymap.set('n', '<leader>gi', ext.telescope_lsp_implementation,
+    vim.keymap.set('n', keymap.go_to_implementation, ext.telescope_lsp_implementation,
     { desc = "Go to implementation", buffer = buffer, noremap = true, silent = true })
 end
 return {
@@ -65,22 +65,22 @@ return {
                 vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
                 local buffer = ev.buf
-                vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition,
+                vim.keymap.set("n", keymap.go_to_definition, vim.lsp.buf.definition,
                 { desc = "Go to definition", buffer = buffer, noremap = true, silent = true })
-                vim.keymap.set("n", "K", vim.lsp.buf.hover,
+                vim.keymap.set("n", keymap.lsp_hover, vim.lsp.buf.hover,
                 { desc = "Hover", buffer = buffer, noremap = true, silent = true })
-                vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation,
+                vim.keymap.set("n", keymap.go_to_implementation, vim.lsp.buf.implementation,
                 { desc = "Go to implementation", buffer = buffer, noremap = true, silent = true })
-                vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help,
+                vim.keymap.set("n", keymap.lsp_signature_help, vim.lsp.buf.signature_help,
                 { desc = "Signature help", buffer = buffer, noremap = true, silent = true })
-                vim.keymap.set("n", "<leader>gD", vim.lsp.buf.type_definition,
+                vim.keymap.set("n", keymap.go_to_type_definition, vim.lsp.buf.type_definition,
                 { desc = "Go to type definition", buffer = buffer, noremap = true, silent = true })
-                vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename,
+                vim.keymap.set("n", keymap.go_to_references, vim.lsp.buf.rename,
                 { desc = "Rename symbol", buffer = buffer, noremap = true, silent = true })
-                vim.keymap.set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action,
-                { desc = "Code action", buffer = buffer, noremap = true, silent = true })
-                vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({async = true}) end,
-                { desc = "", buffer = buffer, noremap = true, silent = true })
+                vim.keymap.set({ "n", "v" }, keymap.lsp_code_action, vim.lsp.buf.code_action,
+                { desc = "Lsp code action", buffer = buffer, noremap = true, silent = true })
+                vim.keymap.set("n", keymap.lsp_format_files, function() vim.lsp.buf.format({async = true}) end,
+                { desc = "Lsp format file", buffer = buffer, noremap = true, silent = true })
 
                 local client = vim.lsp.get_client_by_id(ev.data.client_id)
                 if client.name == "omnisharp" then
