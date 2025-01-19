@@ -20,7 +20,7 @@ require("lazy").setup({
         { import = "plugins.editor" },
         { import = "plugins.ui" },
         { import = "plugins.lsp" },
-        { import = "plugins.lsp.lang.omnisharp" },
+        { import = "plugins.lsp.lang.csharp" },
     },
     change_detection = {
         notify = false,
