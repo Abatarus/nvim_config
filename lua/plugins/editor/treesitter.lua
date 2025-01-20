@@ -17,7 +17,8 @@ return {
             "c",
             "cpp",
             "toml",
-            "json"
+            "json",
+            "sql",
         },
     }
 }
