@@ -15,7 +15,6 @@ vim.opt.autoindent = false
 vim.opt.smartindent = true
 
 vim.opt_global.fileformat = "unix" -- lf
-vim.opt_global.fileformats = { "unix" }
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
