@@ -20,5 +20,10 @@ return {
             "json",
             "sql",
         },
-    }
+    },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+      -- Регистрируем парсер 'xml' для файлов с типом 'axaml'
+      vim.treesitter.language.register("xml", "axaml")
+    end,
 }

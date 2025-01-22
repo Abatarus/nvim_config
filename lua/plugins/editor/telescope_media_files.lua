@@ -1,5 +1,6 @@
 return {
     "nvim-telescope/telescope-media-files.nvim",
+    enabled = false,
     dependencies = {
         "nvim-lua/popup.nvim",
         "nvim-lua/plenary.nvim",

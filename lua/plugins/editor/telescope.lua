@@ -42,7 +42,7 @@ return {
             media_files = {
                 -- filetypes whitelist
                 -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-                filetypes = {"png", "webp", "jpg", "jpeg"},
+                filetypes = {"png", "webp", "jpeg", "jpg"},
                 -- find command (defaults to `fd`)
                 find_cmd = "fd",
                 preview_cmd = "chafa",
