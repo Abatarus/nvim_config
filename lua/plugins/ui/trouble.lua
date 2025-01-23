@@ -4,12 +4,12 @@ return {
     cmd = "Trouble",
     keys = {
         {
-            keymap.view_global_troubles,
+            keymap.trouble_global,
             "<cmd>Trouble diagnostics toggle focus=true<cr>",
             desc = "Diagnostics (Trouble)",
         },
         {
-            keymap.view_buffer_troubles,
+            keymap.trouble_local,
             "<cmd>Trouble diagnostics toggle filter.buf=0 focus=true<cr>",
             desc = "Buffer Diagnostics (Trouble)",
         },
