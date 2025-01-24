@@ -29,4 +29,14 @@ return {
             },
         },
     },
+    {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        name = "mason-tools",
+        opts = {
+            ensure_installed = {
+                "csharpier",
+                "stylua",
+            }
+        },
+    },
 }
