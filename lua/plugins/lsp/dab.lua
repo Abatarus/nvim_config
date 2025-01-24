@@ -18,8 +18,8 @@ return {
     config = function()
         local dap = require("dap")
         dap.adapters.coreclr = require("configs.csharp.debug").adapter_config
-        dap.configurations.cs = require("configs.csharp.debug").config
-        dap.configurations.csproj = require("configs.csharp.debug").config
-        dap.configurations.axaml = require("configs.csharp.debug").config
+        dap.configurations.cs = { require("configs.csharp.debug").config }
+        dap.configurations.csproj =  { require("configs.csharp.debug").config }
+        dap.configurations.axaml = { require("configs.csharp.debug").config }
     end,
 }
