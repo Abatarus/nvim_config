@@ -1,14 +1,3 @@
-local attach_omnisharp = function(buffer)
-    local ext = require('omnisharp_extended')
-    vim.keymap.set('n', keymap.go_to_references, ext.telescope_lsp_references,
-        { desc = "Go to references", buffer = buffer, noremap = true, silent = true })
-    vim.keymap.set('n', keymap.go_to_definition, function() ext.telescope_lsp_definition({ jump_type = 'vsplit' }) end,
-        { desc = "Go to definition", buffer = buffer, noremap = true, silent = true })
-    vim.keymap.set('n', keymap.go_to_type_definition, ext.telescope_lsp_type_definition,
-        { desc = "Go to type definition", buffer = buffer, noremap = true, silent = true })
-    vim.keymap.set('n', keymap.go_to_implementation, ext.telescope_lsp_implementation,
-        { desc = "Go to implementation", buffer = buffer, noremap = true, silent = true })
-end
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -16,44 +5,11 @@ return {
     },
     after = { "mason-lspconfig", "nvim-cmp" },
     config = function()
-        local lspconfig = require("lspconfig")
-        local configs = require("lspconfig.configs")
         local capatibilities = require("cmp_nvim_lsp").default_capabilities()
-        --        local avalonia_lsp_bin = os.getenv("USERPROFILE") ..
-        --            "/.vscode/extensions/avaloniateam.vscode-avalonia-0.0.32/avaloniaServer/AvaloniaLanguageServer.dll"
-        local avalonia_lsp_bin =
-        "D:\\work\\AvaloniaVSCode\\src\\AvaloniaLSP\\AvaloniaLanguageServer\\bin\\Debug\\net8.0/AvaloniaLanguageServer.dll"
-        local slnparser_bin = os.getenv("USERPROFILE") ..
-            "/.vscode/extensions/avaloniateam.vscode-avalonia-0.0.32/solutionParserTool/SolutionParser.dll"
-        configs.avalonia = {
-            default_config = {
-                cmd = { "dotnet", avalonia_lsp_bin },
-                filetypes = { "xaml", "axaml" },
-                capatibilities = capatibilities,
-                root_dir = function(fname)
-                    return lspconfig.util.root_pattern("*.sln")(fname) or vim.fn.getcwd()
-                end,
-                settings = {},
-            },
-            on_new_config = function(_, new_root_dir)
-                for _, client in pairs(vim.lsp.get_active_clients()) do
-                    if client.config.root_dir == new_root_dir then
-                        return
-                    end
-                end
-                local sln_file = nil
-                local sln_files = require("plenary.scandir").scan_dir({ new_root_dir },
-                    { search_pattern = "%.sln$", depth = 1 })
-                if sln_files then
-                    sln_file = sln_files[1]
-                end
-                vim.fn.system("dotnet " .. slnparser_bin .. " " .. sln_file)
-                print("refr")
-            end,
-        }
+        local lspconfig = require("lspconfig")
+        require("configs.csharp.avalonia").load_lsp_config()
         lspconfig.avalonia.setup({
             capatibilities = capatibilities,
-            filetypes = { "xaml", "axaml", "xml" },
         })
         lspconfig.rust_analyzer.setup({
         })
@@ -94,15 +50,6 @@ return {
         lspconfig.clangd.setup({
             capatibilities = capatibilities,
         })
-        --vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"},{ pattern = {"*.axaml"}, callback =
-        --function()
-        --vim.cmd.setfiletype("xml")
-        --vim.lsp.start({
-        --  name = "Avalonia LSP",
-        --cmd = { "dotnet", avalonia_lsp_bin },
-        --root_dir = vim.fn.getcwd(),
-        --})
-        --  end})
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(ev)
@@ -128,7 +75,7 @@ return {
 
                 local client = vim.lsp.get_client_by_id(ev.data.client_id)
                 if client.name == "omnisharp" then
-                    attach_omnisharp(buffer)
+                    require("configs.csharp.omnisharp").on_attach(buffer)
                 end
             end,
         })
