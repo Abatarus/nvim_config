@@ -2,10 +2,10 @@ return {
     load_lsp_config = function()
         local lspconfig = require("lspconfig")
         local configs = require("lspconfig.configs")
-        --        local avalonia_lsp_bin = os.getenv("USERPROFILE") ..
-        --            "/.vscode/extensions/avaloniateam.vscode-avalonia-0.0.32/avaloniaServer/AvaloniaLanguageServer.dll"
-        local avalonia_lsp_bin =
-        "D:\\work\\AvaloniaVSCode\\src\\AvaloniaLSP\\AvaloniaLanguageServer\\bin\\Debug\\net8.0/AvaloniaLanguageServer.dll"
+        local avalonia_lsp_bin = os.getenv("USERPROFILE") ..
+            "/.vscode/extensions/avaloniateam.vscode-avalonia-0.0.32/avaloniaServer/AvaloniaLanguageServer.dll"
+        --local avalonia_lsp_bin =
+        --"D:\\work\\AvaloniaVSCode\\src\\AvaloniaLSP\\AvaloniaLanguageServer\\bin\\Debug\\net8.0/AvaloniaLanguageServer.dll"
         local slnparser_bin = os.getenv("USERPROFILE") ..
             "/.vscode/extensions/avaloniateam.vscode-avalonia-0.0.32/solutionParserTool/SolutionParser.dll"
         configs.avalonia = {
