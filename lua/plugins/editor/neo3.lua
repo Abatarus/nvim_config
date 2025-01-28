@@ -26,6 +26,20 @@ return {
                     "*.meta",
                 },
             },
+            window = {
+                mappings = {
+                    ["R"] = "easy",
+                },
+            },
+        },
+        commands = {
+            ["easy"] = function(state)
+                local node = state.tree:get_node()
+                local path = node == "directory" and node.path or vim.fs.dirname(node.path)
+                require("easy-dotnet").create_new_item(path, function()
+                    require("neo-tree.sources.manager").refresh(state.name)
+                end)
+            end,
         },
     },
     keys = {
