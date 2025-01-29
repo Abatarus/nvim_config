@@ -1,4 +1,2 @@
-formater for avalonia
 linters
-:
 

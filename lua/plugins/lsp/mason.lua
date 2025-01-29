@@ -36,7 +36,6 @@ return {
             ensure_installed = {
                 "csharpier",
                 "stylua",
-                "xmlformatter",
             }
         },
     },

@@ -32,5 +32,17 @@ return {
                 vim.fn.system("dotnet " .. slnparser_bin .. " " .. sln_file)
             end,
         }
-    end
+    end,
+    get_formatter_config = function()
+        return {
+            inherit = false,
+            command = "xstyler",
+            args = {
+                "-f", "$FILENAME",
+                "-c", vim.fn.stdpath("data") .. "/configs/axaml.json",
+            },
+            stdin = false,
+            timeout = 5000,
+        }
+    end,
 }
