@@ -24,7 +24,7 @@ vim.opt.termguicolors = true
 
 vim.opt.spell = true
 vim.opt.spelllang = "en,ru";
-vim.cmd[[let g:spellfile_URL = 'https://ftp.nluug.nl/vim/runtime/spel']]
+vim.cmd("let g:spellfile_URL = 'https://ftp.nluug.nl/vim/runtime/spell'")
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
