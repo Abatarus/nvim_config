@@ -66,7 +66,7 @@ return {
                     { desc = "Signature help", buffer = buffer, noremap = true, silent = true })
                 vim.keymap.set("n", keymap.go_to_type_definition, vim.lsp.buf.type_definition,
                     { desc = "Go to type definition", buffer = buffer, noremap = true, silent = true })
-                vim.keymap.set("n", keymap.go_to_references, vim.lsp.buf.rename,
+                vim.keymap.set("n", keymap.lsp_rename, vim.lsp.buf.rename,
                     { desc = "Rename symbol", buffer = buffer, noremap = true, silent = true })
                 vim.keymap.set({ "n", "v" }, keymap.lsp_code_action, vim.lsp.buf.code_action,
                     { desc = "Lsp code action", buffer = buffer, noremap = true, silent = true })
